@@ -17,7 +17,7 @@ bool XOR(bool x, bool y){
     return x^y;
 }
 bool MUX(bool a, bool b, bool sel){
-    return sel ? a : b;
+    return (sel ? b : a);
 }
 void DMUX(bool i, bool sel, bool * a, bool * b){
     if (!sel){
