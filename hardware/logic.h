@@ -2,7 +2,7 @@
 #define LOGIC_H
 
 typedef enum {false = 0, true } bool;
-// NOTE: C too evaluates 0 value as false and 1 value as true.
+/* NOTE: C too evaluates 0 value as false and 1 value as true. */
 
 bool NAND(bool x, bool y);
 bool NOT(bool x);

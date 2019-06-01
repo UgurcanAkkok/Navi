@@ -1,6 +1,9 @@
 #include "logic.h"
+#include "arithmetic.h"
 #include <stdio.h>
+#include <string.h>
 
+void printBin(bool bin[16]);
 void logic(){
     bool res, a, b, i, sel;
     for (a = 0; a < 2; a++){
@@ -32,7 +35,90 @@ void logic(){
 
     return;
 }
+
+void arithmetic(){
+    bool sum, carry, a, b, c;
+    for (a = 0; a < 2; a++){
+        for (b = 0; b < 2; b++){
+            halfAdder(a, b, &sum, &carry);
+            printf("a = %d, b = %d, a HA b = %d%d\n", a, b, carry, sum);
+            for (c = 0; c < 2; c++){
+                fullAdder(a, b, c, &sum, &carry);
+                printf("a = %d, b = %d, carryin = %d, a FA b with carryin  = %d%d\n",
+                        a, b, c, carry, sum);
+            }
+        }
+    }
+    bool a16[16] = {0,0,0,0,0,0,0,0,0,0,1,0,1,1,0,1};
+    printf("a is ");
+    printBin(a16);
+    printf("\n");
+
+    bool b16[16] = {0,0,0,0,0,0,0,0,0,0,1,1,1,0,1,1};
+    printf("b is ");
+    printBin(b16);
+    printf("\n");
+
+    bool out[16] = {0};
+    adder(a16, b16, out);
+    printf("a + b is ");
+    printBin(out);
+    printf("\n");
+    
+    increment(a16,out);
+    printf("a + 1 is ");
+    printBin(out);
+    printf("\n");
+    
+    printf("=============ALU==========");
+    bool x[16] = {0,0,0,0,0,0,0,0,0,0,1,0,1,1,0,1};
+    bool x_def[16] = {0,0,0,0,0,0,0,0,0,0,1,0,1,1,0,1};
+    printf("x is ");
+    printBin(x);
+    printf("\n");
+
+    bool y[16] = {0,0,0,0,0,0,0,0,0,0,1,1,1,0,1,1};
+    bool y_def[16] = {0,0,0,0,0,0,0,0,0,0,1,1,1,0,1,1};
+    printf("y is ");
+    printBin(y);
+    printf("\n");
+
+    bool zr;
+    bool ng;
+    unsigned short opt;
+    int funcCode;
+    int no;
+    for(opt = 0; opt < 16; opt++){
+        for (funcCode = 0; funcCode < 2; funcCode++){
+            for (no = 0; no < 2; no++){
+                alu(x,y,opt,funcCode,no,out,&zr,&ng);
+                printf("Option is %u\n", opt);
+                if(zr) printf("Output is zero\n");
+                if(ng) printf("Output is negative\n");
+                if(funcCode) printf("X + Y\n");
+                else printf("X & Y = ");
+                printBin(out);
+                printf("\n");
+                memcpy(x, x_def, sizeof(x_def));
+                memcpy(y, y_def, sizeof(y_def));
+            }
+        }
+    }
+}
+
+
+
+
 int main(void){
-    logic();
+    /*logic();
+     */
+    arithmetic();
     return 0;
+}
+
+void printBin(bool *a){
+    int i;
+    for (i = 0; i < 16; i++){
+        printf("%d", a[i]);
+    }
 }

@@ -28,33 +28,38 @@ void DMUX(bool i, bool sel, bool * a, bool * b){
     }
 }
 
-//Multibit version
+/*Multibit version*/
 void not16(bool * in, bool * out){
-    for (int i = 0; i < 16; i++){
+    int i;
+    for (i = 0; i < 16; i++){
         out[i] = NOT(in[i]);
     }
 }
 
 void and16(bool * in1,bool * in2,  bool * out){
-    for (int i = 0; i < 16; i++){
+    int i;
+    for (i = 0; i < 16; i++){
         out[i] = AND(in1[i], in2[i]);
     }
 }
 
 void or16(bool * in1,bool * in2,  bool * out){
-    for (int i = 0; i < 16; i++){
+    int i; 
+    for (i = 0; i < 16; i++){
         out[i] = OR(in1[i], in2[i]);
     }
 }
 
 void nand16(bool * in1,bool * in2,  bool * out){
-    for (int i = 0; i < 16; i++){
+    int i;
+    for (i = 0; i < 16; i++){
         out[i] = NAND(in1[i], in2[i]);
     }
 }
 
 void mux16(bool * a, bool * b, bool sel, bool * out){
-    for (int i = 0; i < 16; i++){
+    int i;
+    for (i = 0; i < 16; i++){
         out[i] = MUX(a[i], b[i], sel);
     }
 }
@@ -63,7 +68,8 @@ void mux16(bool * a, bool * b, bool sel, bool * out){
  * Multiway
  */
 bool or8way(bool in[8]){
-    for (int i = 0; i < 8; i++){
+    int i;
+    for (i = 0; i < 8; i++){
         if (in[i]){
             return true;
         }
