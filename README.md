@@ -9,6 +9,7 @@ The main reason why i do such a project is to learn C, gain knowledge in the mec
 And finally, any contribution and guidance is indeed welcome.
 
 ##Documentation
+
 ###Hardware
 1. Logic
 Includes _logic.c_ and _logic.h_. Capitalized functions are the basic logic gates. Others are created with using them. If a function returns void, it is most probably saves the output to given last parameters. The reason is there is more than one value or array that must be returned. The Navi will be 16 bit computer, that is why multi bit functions assumes 16 length array. _bool_ type emulates bool type from C99/C++. 
@@ -19,4 +20,5 @@ Increment function adds 1 to given binary number and saves the output to second 
 ALU takes 2 main input, and 3 option parameter, and 3 output parameter. See _arithmetic.h_ for details. And outputs out,zr,ng to parameters. zr is true if output is zero. ng is true if output is negative. 
 
 ###Software
+
 ___Not implemented___
