@@ -50,6 +50,6 @@ void alu(bool x[16], bool y[16], unsigned short option,
     for(i = 0; i < 16; i++){
         if (out[i] == 1) *zr = 0;
     }
-    *ng = out[15];
+    *ng = out[0];
     return;
 }
