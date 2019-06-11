@@ -30,12 +30,14 @@ void alu(bool x[16], bool y[16], unsigned short option,
     }
     if (CHECKBIT(option, 1)){
         for (i = 0; i < 16; i++){ x[i] = !x[i]; }
+        increment(x,x);
     }
     if (CHECKBIT(option, 2)){
         for (i = 0; i < 16; i++){ y[i] = 0; }
     }
     if (CHECKBIT(option, 3)){
         for (i = 0; i < 16; i++){ y[i] = !y[i]; }
+        increment(y,y);
     }
     if (funcCode){
         adder(x,y,out);
