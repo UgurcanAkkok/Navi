@@ -18,6 +18,10 @@ union ram_t {
     int size;
 };
 
+ /*if load is 1, inval (in value) is written to bit, register, or ram
+  * Otherwise it doesnt write any value, in both cases output is the
+  * latest value in the given memory 
+  */
 bool bitchip(bit * b, bool inval, bool load);
 void regchip(reg * r, bool inval[16], bool load, bool out[16]);
 void ramchip(union ram_t ram, bool inval[16], 
