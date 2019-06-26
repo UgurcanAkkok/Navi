@@ -30,27 +30,16 @@ _ramchip_ pretty much does the same thing, it uses the register at the given add
 4. CPU
 
 Declares  A, D, M, IP registers and a RAM. 
-
 A will be mostly used for storing addresses and sometimes values.
-
 D will be used for holding values only.
-
 M is the pointed memory location, a register, in the ram.
-
 IP is the instruction pointer, points to the next instruction.
-
 Mem is the ram, when accessing ram, A register's value is used as the address.
-
 _loadconst_ is for writing a constant value to a register.
-
 _regtoi_ translates a register's value to integer.
-
 _load_ writes the information in one register to other.
-
 _access_ reads the value at the ram, writes it to the register given in second parameter.
-
 _bitshift_ shifts the bits in the register.
-
 _cpu_ is the main function of this file, it handles all the instructions. For more detail, go to source and see comments.
 ### Software
 
